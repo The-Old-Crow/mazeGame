@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 win = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
@@ -84,6 +85,20 @@ middle_wall = Wall(((wwin//2)-10), 0, 10, (hwin//2))
 wall_group.add(middle_wall)
 all_sprites.add(middle_wall)
 
+for i in range(0, 150, 1):
+	#random start point
+	randomstartx = random.randrange(0, wwin, 20)
+	randomstarty = random.randrange(0, hwin, 20)
+	#horizontal or vertical
+	orientation = random.randrange(-1, 2, 1)
+	if orientation > 0:
+		randomwall = Wall(randomstartx, randomstarty, 10, 200)
+		wall_group.add(randomwall)
+		all_sprites.add(randomwall)
+	else:
+		randomwall = Wall(randomstartx, randomstarty, 200, 10)
+		wall_group.add(randomwall)
+		all_sprites.add(randomwall)
 running = True
 while running:
 	clock.tick(30)
